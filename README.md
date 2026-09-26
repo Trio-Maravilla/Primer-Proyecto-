@@ -1,1 +1,2 @@
-Proyecto de data sara nelson y leo
+# Proyecto 1 : Fundamentos
+### Este proyecto busca identificar características, diferencias y patrones que puedan aportar elementos para comprender mejor la situación de la población estudiada y poder dar un analisis para la Alcaldia, el cual les va ayudar a orientar futuras acciones de política pública. Por esta razon se enfoco el analisis en la pregunta "¿Qué características tiene el grupo étnico con mayor percepción de bienestar?" que nos permite enfoncarnos en los grupos etnicos encuestados y buscar patrones del bienestar en esots mismos. .....
