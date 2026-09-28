@@ -66,9 +66,7 @@ Para más información sobre el porqué de cada una, ver la tabla en la carpeta 
 
 ### Estandarización y traducción de datos
 
-Para facilitar la legibilidad del código y el análisis, se reemplazaron los nombres de las columnas (que eran códigos) por una pequeña descripción:
-
-`Es_Jefe_de_hogar`, `Tipo_Documento_identidad`, `Edad`, `Estado_civil`, `Autorreconocimiento_Étnico`, `Satisfaccion_vida`, `Satisfaccion_ingreso`, `Satisfaccion_salud`, `Satisfaccion_seguridad`, `Satisfaccion_trabajo`, `Satisfaccion_tiempo_libre`, `Sentido_proposito`, `Escalon_vida`, `Autorreconocimiento_sexual`
+Para facilitar la legibilidad del código y el análisis, se reemplazaron los nombres de las columnas (que eran códigos) por una pequeña descripción: `Es_Jefe_de_hogar`, `Tipo_Documento_identidad`, `Edad`, `Estado_civil`, `Autorreconocimiento_Étnico`, `Satisfaccion_vida`, `Satisfaccion_ingreso`, `Satisfaccion_salud`, `Satisfaccion_seguridad`, `Satisfaccion_trabajo`, `Satisfaccion_tiempo_libre`, `Sentido_proposito`, `Escalon_vida`, `Autorreconocimiento_sexual`.
 
 De la misma manera, se reemplazaron algunos números representantes de categorías por las categorías que representan:
 
@@ -105,7 +103,7 @@ De la misma manera, se reemplazaron algunos números representantes de categorí
 | 5 | Soltero/a |
 | 6 | Casado/a |
 
-Por último, para operar de manera más efectiva con la variable `Es_Jefe_de_hogar`, se modificaron sus valores: originalmente eran un rango muy amplio que no se correspondía adecuadamente con la información de la variable. Para simplificar el análisis, todos los valores distintos de 1 se convirtieron a 2, de modo que se pueda distinguir si se es o no jefe del hogar.
+Por último, para operar de manera más efectiva con la variable `Es_Jefe_de_hogar`, se modificaron sus valores: originalmente eran un rango muy amplio que no se correspondía adecuadamente con la información de la variable. Para simplificar el análisis, todos los valores diferentes a 1 se convirtieron a 2, de modo que se pueda distinguir si se es o no jefe del hogar.
 
 ### Diccionario de datos
 
@@ -146,7 +144,7 @@ En las dos primeras variables, cada factor que las compone tiene un peso del 25 
 
 ### Distribución de variables
 
-Para la mayor parte de los valores se escogió el promedio, pues se consideró una medida suficientemente correcta para representar su distribución. Para ver gráficas y otras medidas, ver **XXX**.
+Para la mayor parte de los valores se escogió el promedio, pues se consideró que esta medida era suficientemente correcta para representar su distribución. De la misma manera, para las variables categóricas se optó por la frecuencia relativa y absoluta.
 
 **`Es_Jefe_de_hogar`**
 
@@ -163,7 +161,7 @@ Para la mayor parte de los valores se escogió el promedio, pues se consideró u
 |---|---|
 | Unión libre hace 2 años o más | 33 % |
 | Soltero/a | 24.86 % |
-| Casado/a | 20.79 % |
+| Casado/a | 20.78 % |
 | Separado/Divorciado | 12.98 % |
 | Viudo/a | 6.18 % |
 | Unión libre hace menos de 2 años | 2.12 % |
@@ -179,7 +177,18 @@ Para la mayor parte de los valores se escogió el promedio, pues se consideró u
 | Palenquero | 58 |
 | Gitano/a (Rom) | 25 |
 
-**Variables de satisfacción**
+**`Autorreconocimiento_sexual`**
+
+| Categoría | Registros |
+|---|---|
+| Mujer | 90.916 |
+| Hombre | 80.867 |
+| No responde | 188 |
+| Hombre trans | 26 |
+| Otro | 14 |
+| Mujer trans | 14 |
+
+**Variables de satisfacción y bienestar**
 
 | Variable | Medida |
 |---|---|
@@ -187,23 +196,54 @@ Para la mayor parte de los valores se escogió el promedio, pues se consideró u
 | `Satisfaccion_trabajo` | 7.35 (media) |
 | `Satisfaccion_ingreso` | 8.0 (moda) |
 | `Satisfaccion_salud` | 7.83 (media) |
-| `Satisfaccion_tiempo_libre` | XXX |
-| `Sentido_proposito` | XXX |
-| `Escalon_vida` | XXX |
-| `Autorreconocimiento_sexual` | XXX |
+| `Satisfaccion_tiempo_libre` | 7.58 (media) |
+| `Sentido_proposito` | 8.55 (media) |
+| `Escalon_vida` | 7.65 (media) |
+| `Bienestar_emocional` | 7.98 (media) |
+| `Bienestar_material` | 7.42 (media) |
+| `Bienestar_general` | 7.70 (media) |
+
+### Promedio de bienestar por etnia
+
+| Grupo étnico | Bienestar_emocional | Bienestar_material | Bienestar_general |
+|---|---|---|---|
+| Afrocolombiano | 7.64 | 6.81 | 7.23 |
+| Gitano/a (Rom) | 8.01 | 7.64 | 7.82 |
+| Indígena | 7.67 | 7.17 | 7.42 |
+| Ningún grupo | 8.05 | 7.51 | 7.78 |
+| Palenquero | 7.88 | 7.48 | 7.68 |
+| Raizal | 8.64 | 8.48 | 8.56 |
+
+### Correlación entre bienestar material y bienestar emocional
+
+![Correlación entre Bienestar material y Bienestar emocional](RUTA/DE/LA/IMAGEN.png)
+
+Podemos evidenciar que hay una clara correlación entre el bienestar material y el bienestar emocional que expresan las personas. Sin embargo, aunque esto puede servir como punto de partida para un análisis más detallado, se tiene que tomar con cautela porque no se conocen otros factores que puedan ser causantes de la percepción que se tiene de estos y que no están en el dataset.
+
+Para más detalles de distribución y relación entre variables, ver `data.analysis`.
 
 ### Valores atípicos
 
-**`Satisfaccion_ingreso`:** aunque su rango es de 0 a 10, se encontraron 21.681 registros con el valor `99`, de un total de 172.025 (aproximadamente 12.6 %). Estos valores se interpretaron como nulos. No se les asignó un valor de 9 (una posibilidad), por falta de contexto. Al calcular el bienestar material, los registros con este valor se calculan de manera distinta; no se descartan del todo porque sus otros valores son válidos.
+**`Satisfaccion_ingreso`:** aunque su rango es de 0 a 10, se encontraron 21.681 registros con el valor 99, de un total de 172.025 (aproximadamente 12.6 %). Estos valores se interpretaron como nulos. No se les asignó un valor de 9 (una posibilidad), por falta de contexto. Al calcular el bienestar material, los registros con este valor se calculan de manera distinta; no se descartan del todo porque sus otros valores son válidos.
 
-**`Edad`:** a primera vista podría pensarse que hay valores atípicos, pues según el boxplot realizado hay **XXX** personas con una edad superior a **XXX**. Sin embargo, se decidió no eliminarlos: aunque es una edad alta, es posible e incluso normal. Según registros del DANE, hay aproximadamente 37 personas mayores de 100 años por cada 100.000 habitantes. Además, sus valores en las otras variables son normales.
+**`Edad`:** a primera vista podría pensarse que hay valores atípicos, pues según el boxplot realizado hay 3 personas con una edad superior a 104. Sin embargo, se decidió no eliminarlos: aunque es una edad alta, es posible e incluso normal. Según registros del DANE, hay aproximadamente 37 personas mayores de 100 años por cada 100.000 habitantes. Además, sus valores en las otras variables son normales.
 
 ---
 
 ## 4. Hallazgos
 
-- Se encontró una correlación clara entre el bienestar material y el bienestar emocional, siendo de **XXX**.
-- Hay diferencias modestas entre la distribución de la felicidad para las distintas etnias, siendo que en promedio **XXX**.
+- Existe una correlación clara entre el bienestar material y el bienestar emocional, de **0.725**.
+- Hay diferencias modestas entre la distribución de la felicidad para las distintas etnias. En promedio, las personas de las etnias **raizal** y **gitana** perciben un mayor bienestar que las personas que no se identifican con ninguna etnia, mientras que las personas **indígenas, afrocolombianas y palenqueras** perciben un menor bienestar.
+- Caso destacable: el bienestar material promedio de los afrocolombianos está por debajo de 7, lo cual es aún más interesante si se tiene en cuenta que son el grupo étnico con más registros (después de "Ningún grupo" e indígenas), por lo que podría revelar una tendencia más profunda.
+- Las mujeres son mayoría en casi todas las etnias, excepto en la palenquera.
+- En el grupo indígena la edad es menor en promedio, y la edad se distribuye de manera distinta entre los diferentes grupos indígenas.
+- No parece haber una correlación entre edad y bienestar general.
+
+Estos hallazgos permiten responder de forma parcial a la pregunta analítica, pues se encontraron los grupos étnicos con mayor percepción de bienestar, cómo se correlacionan sus bienestares y cómo resultan en comparación con las personas que no pertenecen a ningún grupo étnico. Sin embargo, resulta difícil definir características propias de estos grupos por la naturaleza del dataset, que no incluye muchas variables sobre las características de la vida de las personas.
+
+Es importante recordar que todas las conclusiones deben tomarse con cautela: la muestra, aunque significativa, no es lo suficientemente extensa para ser robusta al representar información de todas las etnias. Este análisis es válido en el contexto en que se da y para los datos sobre los que opera.
+
+Para hacer un análisis más detallado harían falta una muestra más amplia en cuanto a registros y datos de otras variables como ingreso, postura religiosa, dieta, importancia que se le da a la cultura, salud más allá de la percibida, etc.
 
 ---
 
